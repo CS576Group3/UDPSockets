@@ -10,8 +10,8 @@ def main():
     server_socket.bind(server_address)
     print("Server is listening on port 8888...")
 
-    while True:
-        try:
+    try:
+        while True:
             # Wait for a message from the client
             message, client_address = server_socket.recvfrom(1024)
             print(f"Received message from client: {message.decode()}")
@@ -24,10 +24,14 @@ def main():
             response += funnyBit
             server_socket.sendto(response.encode(), client_address)
         
-        except Exception as e:
-            print(f"Server error: {e}")
-            break
+    except Exception as e:
+        print(f"Server error: {e}")
         
+    except KeyboardInterrupt:
+        print("\nServer stopped by user.")
+        
+    finally:
         server_socket.close()
+        
 if __name__ == "__main__":
     main()
