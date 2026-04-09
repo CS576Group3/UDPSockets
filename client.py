@@ -21,5 +21,8 @@ def main():
     except Exception as e:
         print(f"Client error: {e}")
 
+    finally: 
+        client_socket.close()
+
 if __name__ == "__main__":
     main()

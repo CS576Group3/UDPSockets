@@ -26,6 +26,8 @@ def main():
         
         except Exception as e:
             print(f"Server error: {e}")
-
+            break
+        
+        server_socket.close()
 if __name__ == "__main__":
     main()
